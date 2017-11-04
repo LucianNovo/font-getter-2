@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://hasseg.org/stuff/fontList/example.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Font List Example</title>
+	
+</head>
+<body>
+
+<noscript>
+&lt;div style="display:block;background:red;color:white;padding:10px;font-weight:bold;"&gt;
+You need to have Javascript enabled for this demo to work.
+&lt;/div&gt;
+</noscript>
+
+<table style="width:100%;">
+<tbody><tr><td style="vertical-align: top;">
+	<h2>All Fonts:</h2>
+	<div id="fontList">
+	Listing not done yet... <em>(make sure Javascript and Flash are enabled)</em>
+	</div>
+</td><td style="vertical-align: top;">
+	<h2>"Regular" Fonts:</h2>
+	<div id="regularFontList">
+	Listing not done yet... <em>(make sure Javascript and Flash are enabled)</em>
+	</div>
+</td></tr>
+</tbody></table>
+
+<script type="text/javascript">
+<!--
+function populateFontList(fontArr)
+{
+	var allFontsCounter = 0;
+	var regularFontsCounter = 0;
+	var allFontsHTML = '<ul>';
+	var regularFontsHTML = allFontsHTML;
+	
+	for (var key in fontArr)
+	{
+		var fontName = fontArr[key];
+		
+		// trim
+		fontName = fontName.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+		
+		if (fontName.match(/[_\-\s]Italic$/)
+			|| fontName.match(/[_\-\s](Demi)?[Bb]old$/)
+			|| fontName.match(/[_\-\s]Medium$/)
+			|| fontName.match(/[_\-\s](Ultra)?[Ll]ight$/)
+			|| fontName.match(/[_\-\s]Condensed$/)
+			)
+			allFontsHTML += '<li style="color:#aaa;">'+fontName+'</li>';
+		else
+		{
+			allFontsHTML += '<li>'+fontName+'</li>';
+			fontName = fontName.replace(/\s*Regular$/, '');
+			regularFontsHTML += '<li>'+fontName+'</li>';
+			regularFontsCounter++;
+		}
+		
+		allFontsCounter++;
+	}
+	
+	regularFontsHTML += '</ul>';
+	allFontsHTML += '</ul>';
+	allFontsHTML = allFontsCounter+' fonts altogether:'+allFontsHTML;
+	regularFontsHTML = regularFontsCounter+' "regular" fonts:'+regularFontsHTML;
+	
+	document.getElementById('fontList').innerHTML = allFontsHTML;
+	document.getElementById('regularFontList').innerHTML = regularFontsHTML;
+}
+-->
+</script>
+
+<object id="fontListSWF" name="fontListSWF" type="application/x-shockwave-flash" data="./Font List Example_files/FontList.swf.download" width="1" height="1">
+    <param name="movie" value="FontList.swf">
+	<embed src="FontList.swf" width="1" height="1">
+</object>
+
+<div style="display: none;"><div class="niice-bar" id="niice-bar">
+    <div class="boards">
+    </div>
+    <div class="loading-spinner">Loading…</div>
+    <div class="error-text">
+      <span class="msg"></span>
+      <span class="close-cross">×</span>
+    </div>
+</div>
+</div></body></html>
